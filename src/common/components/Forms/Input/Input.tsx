@@ -1,6 +1,6 @@
 import React, { forwardRef, LegacyRef } from 'react';
 import classNames from 'classnames';
-import { Message, MessageType } from '@/common/Form/Message';
+import { Message, MessageType } from '@/common/components/Forms';
 import { FieldError } from 'react-hook-form';
 
 interface Props {

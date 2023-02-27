@@ -1,5 +1,4 @@
-import { Container } from '@/common/Container';
-import { Title } from '@/common/Title';
+import { Container, Title } from '@/common/components';
 import { LoginForm } from './LoginForm/LoginFom';
 
 export const Login = () => {

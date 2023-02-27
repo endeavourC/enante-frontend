@@ -1,7 +1,7 @@
 import { FieldValues, SubmitHandler } from 'react-hook-form/dist/types';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/common/Button';
-import { Input } from '@/common/Form/Input';
+import { Button } from '@/common/components';
+import { Input } from '@/common/components/Forms';
 import { FormData, schema } from './schema';
 import { yupResolver } from '@hookform/resolvers/yup';
 
