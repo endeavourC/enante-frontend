@@ -1,6 +1,6 @@
 import React, { forwardRef, LegacyRef } from 'react';
 import classNames from 'classnames';
-import { Message, MessageType } from '@/common/components/Forms';
+import { Label, Message, MessageType } from '@/common/components/Forms';
 import { FieldError } from 'react-hook-form';
 
 interface Props {
@@ -17,13 +17,13 @@ export const Input: React.FC<
 	) => {
 		const inputClasses = classNames({
 			'mt-2': true,
-			'border-muted dark:border-white': true,
+			'border-muted dark:border-white': !errors,
 			'border-danger': errors,
 		});
 
 		return (
 			<div className="flex flex-col w-full my-3">
-				{label && <label className="text-muted dark:text-white">{label}</label>}
+				{label && <Label errors={errors} label={label} />}
 				<input ref={ref} className={inputClasses} {...props} />
 				{errors && (
 					<Message type={MessageType.Danger} message={errors?.message} />
