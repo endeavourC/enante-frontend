@@ -1,3 +1,5 @@
+import { DarkModeValue } from '@/common/types/DarkModeTypes';
+
 export class DarkModeService {
 	private static instance: DarkModeService;
 
@@ -13,21 +15,21 @@ export class DarkModeService {
 	public static get isDarkMode(): boolean {
 		return (
 			window.matchMedia('(prefers-color-scheme: dark)').matches ||
-			localStorage.getItem('darkMode') === 'true'
+			localStorage.getItem('theme') === DarkModeValue.Dark
 		);
 	}
 
 	public static toggleDarkMode(): void {
 		if (this.isDarkMode) {
-			localStorage.removeItem('darkMode');
-			document.documentElement.classList.remove('dark');
+			localStorage.setItem('theme', DarkModeValue.Light);
+			document.documentElement.classList.remove(DarkModeValue.Dark);
 		} else {
-			localStorage.setItem('darkMode', 'true');
-			document.documentElement.classList.add('dark');
+			localStorage.setItem('theme', DarkModeValue.Dark);
+			document.documentElement.classList.add(DarkModeValue.Dark);
 		}
 	}
 
 	public static removeDarkMode(): void {
-		localStorage.removeItem('darkMode');
+		localStorage.setItem('theme', DarkModeValue.Light);
 	}
 }
