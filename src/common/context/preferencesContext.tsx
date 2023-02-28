@@ -1,12 +1,12 @@
-import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, useState } from 'react';
 import { DarkModeService } from '@/common/services/DarkModeService';
 import { DarkModeValue } from '@/common/types/DarkModeTypes';
 
 type preferencesContextType = {
 	language: string;
 	theme: string;
-	toggleTheme?: () => void;
-	setLanguage?: (language: string) => void;
+	toggleTheme: () => void;
+	setLanguage: (language: string) => void;
 };
 
 export const preferencesContext = createContext<preferencesContextType | null>(

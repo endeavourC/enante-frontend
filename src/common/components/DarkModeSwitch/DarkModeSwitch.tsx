@@ -1,5 +1,3 @@
-import { DarkModeService } from '@/common/services/DarkModeService';
-import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ReactComponent as DarkModeIcon } from '@/assets/dark-mode-6682.svg';
 import { ReactComponent as LightModeIcon } from '@/assets/sun-3337.svg';
