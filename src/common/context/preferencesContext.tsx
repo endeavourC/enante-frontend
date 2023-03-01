@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { DarkModeService } from '@/common/services/DarkModeService';
-import { DarkModeValue } from '@/common/types/DarkModeTypes';
+import { DarkModeValue } from '@/common/components/DarkModeSwitch/DarkModeTypes';
 
 type preferencesContextType = {
 	language: string;

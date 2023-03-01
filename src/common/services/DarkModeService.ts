@@ -1,4 +1,4 @@
-import { DarkModeValue } from '@/common/types/DarkModeTypes';
+import { DarkModeValue } from '@/common/components/DarkModeSwitch/DarkModeTypes';
 
 export class DarkModeService {
 	private static instance: DarkModeService;

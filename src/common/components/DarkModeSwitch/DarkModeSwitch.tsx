@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ReactComponent as DarkModeIcon } from '@/assets/dark-mode-6682.svg';
 import { ReactComponent as LightModeIcon } from '@/assets/sun-3337.svg';
-import { DarkModeValue } from '@/common/types/DarkModeTypes';
+import { DarkModeValue } from '@/common/components/DarkModeSwitch/DarkModeTypes';
 import { usePreferencesContext } from '@/common/hooks/usePreferencesContext';
 
 export const DarkModeSwitch = () => {
