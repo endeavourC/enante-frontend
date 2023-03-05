@@ -31,7 +31,9 @@ export const LoginFormBody: React.FC<Props> = ({
 
 	return (
 		<>
-			{error && <Notification message={error} type={NotificationType.Error} />}
+			{error && (
+				<Notification closable message={error} type={NotificationType.Error} />
+			)}
 			<form className="w-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col">
 					<Input
