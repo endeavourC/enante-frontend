@@ -10,6 +10,7 @@ import {
 	NotificationType,
 } from '@/common/components/Notification';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
 	onSubmit: SubmitHandler<LoginPayload>;
@@ -22,6 +23,8 @@ export const LoginFormBody: React.FC<Props> = ({
 	loading,
 	error,
 }) => {
+	const { t } = useTranslation();
+
 	const {
 		handleSubmit,
 		register,
@@ -39,7 +42,7 @@ export const LoginFormBody: React.FC<Props> = ({
 				<div className="flex flex-col">
 					<Input
 						errors={errors.email}
-						label="E-mail"
+						label={t('form.email.label')}
 						type="email"
 						{...register('email')}
 					/>
@@ -48,17 +51,19 @@ export const LoginFormBody: React.FC<Props> = ({
 					<Input
 						errors={errors.password}
 						type="password"
-						label="Password"
+						label={t('form.password.label')}
 						{...register('password')}
 					/>
 				</div>
 				<div className="flex items-center justify-start">
 					<Button isLoading={loading} type="submit">
-						Login
+						{t('login.text')}
 					</Button>
-					<span className="mx-4 text-sm text-muted dark:text-white">or</span>
+					<span className="mx-4 text-sm text-muted dark:text-white">
+						{t('login.or')}
+					</span>
 					<Link className="text-blue-400 hover:text-primary " to="/register">
-						register
+						{t('register.text')}
 					</Link>
 				</div>
 			</form>

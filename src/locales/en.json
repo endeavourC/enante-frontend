@@ -1,0 +1,11 @@
+{
+	"login.form.title": "Login to Enante",
+	"login.text": "Login",
+	"login.or": "or",
+	"register.text": "Register",
+	"form.email.label": "Email",
+	"form.email.invalid": "Invalid Email Address",
+	"form.email.required": "Email Address is required",
+	"form.password.label": "Password",
+	"form.password.required": "Password is required"
+}

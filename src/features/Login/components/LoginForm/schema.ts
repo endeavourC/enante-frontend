@@ -1,3 +1,4 @@
+import i18n from '@/config/i18n';
 import * as yup from 'yup';
 
 export const schema = yup
@@ -5,9 +6,9 @@ export const schema = yup
 	.shape({
 		email: yup
 			.string()
-			.email('Niepoprawny Adres E-mail')
-			.required('Adres E-mail jest wymagany'),
-		password: yup.string().required('Hasło jest wymagane'),
+			.email(i18n.t('form.email.invalid'))
+			.required(i18n.t('form.email.required')),
+		password: yup.string().required(i18n.t('form.password.required')),
 	})
 	.required();
 
