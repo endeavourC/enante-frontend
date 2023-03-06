@@ -9,6 +9,7 @@ import {
 	Notification,
 	NotificationType,
 } from '@/common/components/Notification';
+import { Link } from 'react-router-dom';
 
 interface Props {
 	onSubmit: SubmitHandler<LoginPayload>;
@@ -51,9 +52,15 @@ export const LoginFormBody: React.FC<Props> = ({
 						{...register('password')}
 					/>
 				</div>
-				<Button isLoading={loading} type="submit">
-					Login
-				</Button>
+				<div className="flex items-center justify-start">
+					<Button isLoading={loading} type="submit">
+						Login
+					</Button>
+					<span className="mx-4 text-sm text-muted dark:text-white">or</span>
+					<Link className="text-blue-400 hover:text-primary " to="/register">
+						register
+					</Link>
+				</div>
 			</form>
 		</>
 	);
