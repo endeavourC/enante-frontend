@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '@/store';
 import { register, RegisterPayload } from '@/features/Auth/API/register';
 import { AuthFormBody, RegisterFormFooter } from './components';
+import { schema } from './components/register/schema';
 
 export const Register = () => {
-	const { loading, error } = useSelector((state: RootState) => state.login);
+	const { loading, error } = useSelector((state: RootState) => state.register);
 	const dispatch = useAppDispatch();
 
 	const onSubmit = (data: RegisterPayload) => {
@@ -20,6 +21,7 @@ export const Register = () => {
 					<div className="max-w-2xl w-full shadow-muted/30 p-6 shadow-lg bg-white dark:bg-slate-800 dark:shadow-none transition-all">
 						<Title center>Account registration</Title>
 						<AuthFormBody
+							schema={schema}
 							loading={loading}
 							error={error}
 							onSubmit={onSubmit}

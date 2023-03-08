@@ -1,7 +1,7 @@
 import { SubmitHandler } from 'react-hook-form/dist/types';
 import { useForm } from 'react-hook-form';
 import { Input } from '@/common/components/Forms';
-import { FormData, schema } from '@/features/Auth/schema';
+import { FormData } from '@/features/Auth/components/login/schema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginPayload } from '@/features/Auth/API/login';
 import {
@@ -11,6 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 
 interface Props {
+	schema: any;
 	onSubmit: SubmitHandler<LoginPayload>;
 	loading: boolean;
 	error: string | null | undefined;
@@ -19,6 +20,7 @@ interface Props {
 
 export const AuthFormBody: React.FC<Props> = ({
 	onSubmit,
+	schema,
 	loading,
 	error,
 	footer,

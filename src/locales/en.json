@@ -7,5 +7,6 @@
 	"form.email.invalid": "Invalid Email Address",
 	"form.email.required": "Email Address is required",
 	"form.password.label": "Password",
-	"form.password.required": "Password is required"
+	"form.password.required": "Password is required",
+	"form.password.min": "Password must be at least 8 characters"
 }
