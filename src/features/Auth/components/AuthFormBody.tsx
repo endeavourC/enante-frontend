@@ -1,27 +1,27 @@
 import { SubmitHandler } from 'react-hook-form/dist/types';
 import { useForm } from 'react-hook-form';
-import { Button } from '@/common/components';
 import { Input } from '@/common/components/Forms';
-import { FormData, schema } from './schema';
+import { FormData, schema } from '@/features/Auth/schema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LoginPayload } from '@/features/Login/API/login';
+import { LoginPayload } from '@/features/Auth/API/login';
 import {
 	Notification,
 	NotificationType,
 } from '@/common/components/Notification';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
 	onSubmit: SubmitHandler<LoginPayload>;
 	loading: boolean;
 	error: string | null | undefined;
+	footer?: React.ReactNode;
 }
 
-export const LoginFormBody: React.FC<Props> = ({
+export const AuthFormBody: React.FC<Props> = ({
 	onSubmit,
 	loading,
 	error,
+	footer,
 }) => {
 	const { t } = useTranslation();
 
@@ -55,17 +55,7 @@ export const LoginFormBody: React.FC<Props> = ({
 						{...register('password')}
 					/>
 				</div>
-				<div className="flex items-center justify-start">
-					<Button isLoading={loading} type="submit">
-						{t('login.text')}
-					</Button>
-					<span className="mx-4 text-sm text-muted dark:text-white">
-						{t('login.or')}
-					</span>
-					<Link className="text-blue-400 hover:text-primary " to="/register">
-						{t('register.text')}
-					</Link>
-				</div>
+				{footer}
 			</form>
 		</>
 	);

@@ -6,9 +6,10 @@ export interface LoginPayload {
 	password: string;
 }
 
-type LoginResult = {
-	user: any;
+type LoginResults = {
+	type: string;
 	token: string;
+	expires_at: Date;
 };
 
 type LoginError = {
@@ -16,7 +17,7 @@ type LoginError = {
 };
 
 export const login = createAsyncThunk<
-	LoginResult,
+	LoginResults,
 	LoginPayload,
 	{
 		rejectValue: LoginError;
@@ -27,6 +28,9 @@ export const login = createAsyncThunk<
 			email,
 			password,
 		});
+
+		localStorage.setItem('AUTH_TOKEN', data.token);
+
 		return data;
 	} catch (error: any) {
 		return thunkAPI.rejectWithValue({

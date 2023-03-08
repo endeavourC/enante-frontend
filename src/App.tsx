@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { DarkModeSwitch } from '@/common/components';
-import { Login } from './features/Login';
-import { Register } from './features/Register';
+import { Login } from './features/Auth';
+import { Register } from './features/Auth/';
 
 function App() {
 	return (

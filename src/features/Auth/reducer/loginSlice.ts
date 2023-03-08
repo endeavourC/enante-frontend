@@ -1,11 +1,8 @@
+import { DataDefaultState } from '@/common/types/DataDefaultState';
 import { createSlice } from '@reduxjs/toolkit';
 import { login } from '../API/login';
 
-export interface LoginState {
-	loading: boolean;
-	error: string | null | undefined;
-	success: boolean;
-	user: any;
+export interface LoginState extends DataDefaultState {
 	token: string | null;
 }
 
@@ -13,8 +10,7 @@ const initialState: LoginState = {
 	loading: false,
 	error: null,
 	success: false,
-	user: {},
-	token: null,
+	token: localStorage.getItem('AUTH_TOKEN') || null,
 };
 
 const loginSlice = createSlice({
@@ -29,7 +25,6 @@ const loginSlice = createSlice({
 		builder.addCase(login.fulfilled, (state, { payload }) => {
 			state.loading = false;
 			state.success = true;
-			state.user = payload.user;
 			state.token = payload.token;
 		});
 		builder.addCase(login.rejected, (state, { payload }) => {
