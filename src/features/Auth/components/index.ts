@@ -1,3 +1,3 @@
-export { LoginFormFooter } from './login/LoginFormFooter';
-export { RegisterFormFooter } from './register/RegisterFormFooter';
+export { LoginFormActions } from './login/LoginFormActions';
+export { RegisterFormActions } from './register/RegisterFormActions';
 export { AuthFormBody } from './AuthFormBody';

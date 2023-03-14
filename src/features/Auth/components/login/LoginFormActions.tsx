@@ -6,7 +6,7 @@ interface Props {
 	loading: boolean;
 }
 
-export const LoginFormFooter: React.FC<Props> = ({ loading }) => {
+export const LoginFormActions: React.FC<Props> = ({ loading }) => {
 	const { t } = useTranslation();
 
 	return (

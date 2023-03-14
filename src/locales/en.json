@@ -3,6 +3,7 @@
 	"login.text": "Login",
 	"login.or": "or",
 	"register.text": "Register",
+	"register.backToLoginText": "Back to login",
 	"form.email.label": "Email",
 	"form.email.invalid": "Invalid Email Address",
 	"form.email.required": "Email Address is required",

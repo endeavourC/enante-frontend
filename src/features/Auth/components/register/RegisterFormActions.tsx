@@ -1,11 +1,12 @@
 import { Button } from '@/common/components';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 interface Props {
 	loading: boolean;
 }
 
-export const RegisterFormFooter: React.FC<Props> = ({ loading }) => {
+export const RegisterFormActions: React.FC<Props> = ({ loading }) => {
 	const { t } = useTranslation();
 
 	return (
@@ -13,6 +14,12 @@ export const RegisterFormFooter: React.FC<Props> = ({ loading }) => {
 			<Button isLoading={loading} type="submit">
 				{t('register.text')}
 			</Button>
+			<span className="mx-4 text-sm text-muted dark:text-white">
+				{t('login.or')}
+			</span>
+			<Link className="text-blue-400 hover:text-primary " to="/login">
+				{t('register.backToLoginText')}
+			</Link>
 		</div>
 	);
 };

@@ -1,16 +1,12 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { DarkModeSwitch } from '@/common/components';
-import { Login } from './features/Auth';
-import { Register } from './features/Auth/';
+import { AnimatedRoutes } from './common/Routes/AnimatedRoutes';
 
 function App() {
 	return (
 		<BrowserRouter>
 			<DarkModeSwitch />
-			<Routes>
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-			</Routes>
+			<AnimatedRoutes />
 		</BrowserRouter>
 	);
 }

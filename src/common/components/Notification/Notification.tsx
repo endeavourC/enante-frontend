@@ -32,7 +32,7 @@ export const Notification: React.FC<Props> = ({ message, type, closable }) => {
 	};
 
 	return (
-		<AnimatePresence>
+		<AnimatePresence mode="popLayout">
 			{show && (
 				<motion.div
 					initial={{ opacity: 0, x: -20 }}

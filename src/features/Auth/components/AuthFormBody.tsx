@@ -16,14 +16,15 @@ interface Props {
 	loading: boolean;
 	error: string | null | undefined;
 	footer?: React.ReactNode;
+	children: React.ReactNode;
 }
 
 export const AuthFormBody: React.FC<Props> = ({
 	onSubmit,
 	schema,
+	children,
 	loading,
 	error,
-	footer,
 }) => {
 	const { t } = useTranslation();
 
@@ -57,7 +58,7 @@ export const AuthFormBody: React.FC<Props> = ({
 						{...register('password')}
 					/>
 				</div>
-				{footer}
+				{children}
 			</form>
 		</>
 	);
