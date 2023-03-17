@@ -4,17 +4,12 @@ import { Input } from '@/common/components/Forms';
 import { FormData } from '@/features/Auth/components/login/schema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginPayload } from '@/features/Auth/API/login';
-import {
-	Notification,
-	NotificationType,
-} from '@/common/components/Notification';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
 	schema: any;
 	onSubmit: SubmitHandler<LoginPayload>;
 	loading: boolean;
-	error: string | null | undefined;
 	footer?: React.ReactNode;
 	children: React.ReactNode;
 }
@@ -24,7 +19,6 @@ export const AuthFormBody: React.FC<Props> = ({
 	schema,
 	children,
 	loading,
-	error,
 }) => {
 	const { t } = useTranslation();
 
@@ -38,9 +32,6 @@ export const AuthFormBody: React.FC<Props> = ({
 
 	return (
 		<>
-			{error && (
-				<Notification closable message={error} type={NotificationType.Error} />
-			)}
 			<form className="w-full" onSubmit={handleSubmit(onSubmit)}>
 				<div className="flex flex-col">
 					<Input

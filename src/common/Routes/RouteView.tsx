@@ -1,4 +1,6 @@
 import React from 'react';
+import { useCurrentUser } from '@/common/hooks/useCurrentUser';
+import { Navigate } from 'react-router-dom';
 
 interface Props {
 	guestOnly?: boolean;
@@ -9,9 +11,14 @@ export const RouteView: React.FC<Props> = ({
 	guestOnly = false,
 	component,
 }) => {
-	if (guestOnly) {
-	} else {
-		console.log('Only logged in users!');
+	const { isLogged } = useCurrentUser();
+
+	if (isLogged && guestOnly) {
+		return <Navigate to="/panel" />;
+	}
+
+	if (!isLogged && !guestOnly) {
+		return <Navigate to="/login" />;
 	}
 
 	return <React.Suspense>{component}</React.Suspense>;

@@ -1,5 +1,5 @@
 export interface DataDefaultState {
 	loading: boolean;
-	error: string | null | undefined;
+	error: any;
 	success: boolean;
 }

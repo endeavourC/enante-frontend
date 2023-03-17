@@ -9,6 +9,10 @@ import { schema } from './components/login/schema';
 import { reset } from './reducer/loginSlice';
 import { withResetStateWhenUnmount } from '@/features/Auth/hoc/withResetStateWhenUnmount';
 import { motion } from 'framer-motion';
+import {
+	Notification,
+	NotificationType,
+} from '@/common/components/Notification';
 
 const LoginView = () => {
 	const { t } = useTranslation();
@@ -27,15 +31,17 @@ const LoginView = () => {
 					initial={{ opacity: 0, x: 200 }}
 					animate={{ opacity: 1, x: 0 }}
 					exit={{ opacity: 0, x: -200 }}
-					transition={{ type: 'spring' }}
+					transition={{ type: 'spring', duration: 0.65, bounce: 0.5 }}
 				>
 					<div className="flex items-center justify-center h-screen bg-white dark:bg-slate-900 transition-all">
 						<div className="max-w-2xl w-full shadow-muted/30 p-6 shadow-lg bg-white dark:bg-slate-800 dark:shadow-none transition-all">
 							<Title center>{t('login.form.title')}</Title>
+							{error ? (
+								<Notification type={NotificationType.Error} message={error} />
+							) : null}
 							<AuthFormBody
 								schema={schema}
 								loading={loading}
-								error={error}
 								onSubmit={onSubmit}
 							>
 								<LoginFormActions loading={loading} />
