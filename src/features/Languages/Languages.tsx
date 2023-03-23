@@ -1,7 +1,7 @@
 import { Dashboard } from '@/common/components/Dashboard';
 import { DashboardContent } from '@/common/components/Dashboard/DashboardContent';
 
-const PanelView = () => {
+const Languages = () => {
 	return (
 		<Dashboard>
 			<DashboardContent>test</DashboardContent>
@@ -9,4 +9,4 @@ const PanelView = () => {
 	);
 };
 
-export default PanelView;
+export default Languages;

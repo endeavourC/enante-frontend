@@ -6,6 +6,7 @@ import { RouteView } from './common/Routes/RouteView';
 const Login = React.lazy(() => import('@/features/Auth/Login'));
 const Register = React.lazy(() => import('@/features/Auth/Register'));
 const Panel = React.lazy(() => import('@/features/Panel/Panel'));
+const Languages = React.lazy(() => import('@/features/Languages/Languages'));
 
 export const AnimatedRoutes = () => {
 	const location = useLocation();
@@ -25,6 +26,12 @@ export const AnimatedRoutes = () => {
 					path="/panel"
 					element={
 						<RouteView component={<RouteView component={<Panel />} />} />
+					}
+				/>
+				<Route
+					path="/panel/languages"
+					element={
+						<RouteView component={<RouteView component={<Languages />} />} />
 					}
 				/>
 			</Routes>

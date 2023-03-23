@@ -1,6 +1,8 @@
 import React from 'react';
 import { useCurrentUser } from '@/common/hooks/useCurrentUser';
 import { Navigate } from 'react-router-dom';
+import { useAppDispatch } from '@/store';
+import { logout } from '@/features/Auth/reducer/loginSlice';
 
 interface Props {
 	guestOnly?: boolean;
@@ -11,7 +13,12 @@ export const RouteView: React.FC<Props> = ({
 	guestOnly = false,
 	component,
 }) => {
-	const { isLogged } = useCurrentUser();
+	const { isLogged, expires_at } = useCurrentUser();
+	const dispatch = useAppDispatch();
+
+	if (isLogged && expires_at && new Date(expires_at) < new Date()) {
+		dispatch(logout());
+	}
 
 	if (isLogged && guestOnly) {
 		return <Navigate to="/panel" />;
