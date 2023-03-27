@@ -1,81 +1,53 @@
-import { Button } from '@/common/components';
 import { Dashboard } from '@/common/components/Dashboard';
 import { DashboardContent } from '@/common/components/Dashboard/DashboardContent';
+import {
+	Notification,
+	NotificationType,
+} from '@/common/components/Notification';
+import { ListSkeleton } from '@/common/components/Skeletons';
 import { SmartTable } from '@/common/components/SmartTable';
+import { DataLoadHandler } from '@/common/components/DataLoadHandler';
 import { useMemo } from 'react';
+import { useGetLanguagesQuery } from './API/languages';
 import { columns } from './columns';
+import { TableHeading } from './components/TableHeading';
 
 const Languages = () => {
 	const tableColumns = useMemo(() => columns, []);
 
-	const data = useMemo(
-		() => [
-			{
-				name: 'English',
-				code: 'en',
-			},
-			{
-				name: 'Polish',
-				code: 'pl',
-			},
-			{
-				name: 'Dannish',
-				code: 'pl',
-			},
-			{
-				name: 'German',
-				code: 'pl',
-			},
-			{
-				name: 'Italy',
-				code: 'pl',
-			},
-			{
-				name: 'Spain',
-				code: 'pl',
-			},
-			{
-				name: 'Greece',
-				code: 'pl',
-			},
-			{
-				name: 'Norway',
-				code: 'pl',
-			},
-			{
-				name: 'Spain',
-				code: 'pl',
-			},
-			{
-				name: 'Greece',
-				code: 'pl',
-			},
-			{
-				name: 'Norway',
-				code: 'pl',
-			},
-		],
-		[]
-	);
+	const { data, isLoading } = useGetLanguagesQuery();
 
 	return (
 		<Dashboard>
 			<DashboardContent>
-				<SmartTable
-					headingComponent={
-						<div className="flex items-center justify-start">
-							<h3 className="text-2xl leading-6 font-medium text-gray-900 mr-4">
-								Languages
-							</h3>
-							<Button>Add new language</Button>
-						</div>
+				<DataLoadHandler
+					isLoading={isLoading}
+					loader={<ListSkeleton />}
+					error={
+						<>
+							<Notification
+								type={NotificationType.Error}
+								message="Something went wrong! Try to refresh the page."
+							/>
+							<SmartTable
+								columns={tableColumns}
+								searchable
+								sortable
+								data={[]}
+								perPage={10}
+							/>
+						</>
 					}
-					columns={tableColumns}
-					searchable
-					sortable
-					data={data}
-					perPage={10}
-				/>
+				>
+					<SmartTable
+						headingComponent={<TableHeading />}
+						columns={tableColumns}
+						searchable
+						sortable
+						data={data}
+						perPage={10}
+					/>
+				</DataLoadHandler>
 			</DashboardContent>
 		</Dashboard>
 	);
