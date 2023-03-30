@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useRef, useState } from 'react';
 import { DarkModeService } from '@/common/services/DarkModeService';
 import { DarkModeValue } from '@/common/components/DarkModeSwitch/DarkModeTypes';
 

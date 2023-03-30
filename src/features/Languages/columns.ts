@@ -1,3 +1,4 @@
+import { TableActionCell } from './components/TableActionCell';
 export const columns = [
 	{
 		Header: 'Id',
@@ -24,5 +25,6 @@ export const columns = [
 		accessor: 'actions',
 		disableSortBy: true,
 		width: 150,
+		Cell: TableActionCell,
 	},
 ];

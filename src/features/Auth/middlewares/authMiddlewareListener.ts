@@ -10,5 +10,6 @@ authListenerMiddleware.startListening({
 		localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN);
 		localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN_EXPIRES_AT);
 		listenerApi.cancelActiveListeners();
+		listenerApi.dispatch({ type: 'store/reset' });
 	},
 });

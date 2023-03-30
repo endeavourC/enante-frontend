@@ -18,7 +18,6 @@ export const AuthFormBody: React.FC<Props> = ({
 	onSubmit,
 	schema,
 	children,
-	loading,
 }) => {
 	const { t } = useTranslation();
 
