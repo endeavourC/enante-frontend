@@ -73,14 +73,14 @@ export const SmartTable: React.FC<Props> = ({
 
 	return (
 		<div className="flex flex-col">
-			<div className="overflow-x-auto">
+			<div>
 				<div className="p-1.5 w-full inline-block align-middle">
 					<div className="flex items-center justify-between mt-4 mb-2">
 						<div>{headingComponent}</div>
 						{searchable ? <Search onHandleSearch={onHandleSearch} /> : null}
 					</div>
 
-					<div className="overflow-hidden border rounded-lg">
+					<div className="border rounded-lg">
 						<table
 							{...getTableProps()}
 							className="w-full divide-y divide-gray-200"

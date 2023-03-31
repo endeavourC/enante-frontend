@@ -1,5 +1,5 @@
-import { DropdownMenu } from '@/common/components/DropdownMenu';
-import { DropdownMenuItem } from '@/common/components/DropdownMenu/components/DropdownMenuItem';
+import { useMemo } from 'react';
+import { DropdownMenu } from '@/common/components/DropdownMenu/';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import { Row } from 'react-table';
 
@@ -18,18 +18,25 @@ export const TableActionCell: React.FC<Props> = ({ row }) => {
 		console.log('edit');
 	};
 
+	const items = useMemo(
+		() => [
+			{
+				name: 'Edit',
+				icon: <MdEdit />,
+				callback: handleEdit,
+			},
+			{
+				name: 'Delete',
+				icon: <MdDelete />,
+				callback: handleDelete,
+			},
+		],
+		[]
+	);
+
 	return (
 		<div>
-			<DropdownMenu>
-				<DropdownMenuItem onClick={handleEdit}>
-					<MdEdit className="mr-2 dark:fill-white" />
-					Edit
-				</DropdownMenuItem>
-				<DropdownMenuItem onClick={handleDelete}>
-					<MdDelete className="mr-2  dark:fill-white" />
-					Remove
-				</DropdownMenuItem>
-			</DropdownMenu>
+			<DropdownMenu items={items} />
 		</div>
 	);
 };
