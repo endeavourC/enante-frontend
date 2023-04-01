@@ -1,15 +1,15 @@
-import { createContext, useRef, useState } from 'react';
+import { createContext, useState } from 'react';
 import { DarkModeService } from '@/common/services/DarkModeService';
 import { DarkModeValue } from '@/common/components/DarkModeSwitch/DarkModeTypes';
 
-type preferencesContextType = {
+type PreferencesContextType = {
 	language: string;
 	theme: string;
 	toggleTheme: () => void;
 	setLanguage: (language: string) => void;
 };
 
-export const preferencesContext = createContext<preferencesContextType | null>(
+export const PreferencesContext = createContext<PreferencesContextType | null>(
 	null
 );
 
@@ -35,7 +35,7 @@ export const PreferencesProvider: React.FC<Props> = ({ children }) => {
 	};
 
 	return (
-		<preferencesContext.Provider
+		<PreferencesContext.Provider
 			value={{
 				language,
 				theme,
@@ -44,6 +44,6 @@ export const PreferencesProvider: React.FC<Props> = ({ children }) => {
 			}}
 		>
 			{children}
-		</preferencesContext.Provider>
+		</PreferencesContext.Provider>
 	);
 };

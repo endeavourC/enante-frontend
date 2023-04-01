@@ -3,6 +3,8 @@ import classNames from 'classnames';
 export enum ButtonKind {
 	Primary = 'primary',
 	Secondary = 'secondary',
+	Neutral = 'neutral',
+	Danger = 'danger',
 }
 
 interface Props {
@@ -15,10 +17,12 @@ export const Button: React.FC<
 	Props & React.ButtonHTMLAttributes<HTMLButtonElement>
 > = ({ kind = ButtonKind.Primary, children, isLoading, ...props }) => {
 	const classes = classNames({
-		'flex items-center justify-center text-white px-4 py-2  min-w-[130px] rounded-md transition-all duration-300  shadow-xl focus:outline-none focus:ring my-4':
+		'flex items-center justify-center  px-4 py-2  min-w-[130px] rounded-md transition-all duration-300  shadow-xl focus:outline-none focus:ring my-4':
 			true,
-		'bg-primary hover:shadow-primary/30 hover:bg-secondary':
+		'bg-primary hover:shadow-primary/30 hover:bg-secondary text-white':
 			kind === ButtonKind.Primary,
+		'bg-muted hover:shadow-muted/30 text-white': kind === ButtonKind.Neutral,
+		'bg-danger hover:shadow-danger/30 text-white': kind === ButtonKind.Danger,
 		'cursor-pointer': !isLoading,
 		'opacity-50 cursor-not-allowed': isLoading,
 	});

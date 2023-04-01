@@ -1,24 +1,50 @@
-interface Props {
-	children: React.ReactNode;
-}
+import { AnimatePresence, motion } from 'framer-motion';
+import { Dialog } from '@headlessui/react';
+import { ModalBackground } from './components/ModalBackground';
+import { ModalHeading } from './components/ModalHeading';
+import { ModalFooter } from './components/ModalFooter';
+import { ModalContent } from './components/ModalContent';
 
-export const Modal: React.FC<Props> = ({ children }) => {
+type Props = {
+	children: React.ReactNode;
+	isOpen: boolean;
+	width?: string;
+	onClose: () => void;
+};
+const Modal = ({ onClose, isOpen, children, width }: Props) => {
 	return (
-		<div className="fixed z-10 inset-0 overflow-y-auto">
-			<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-				<div className="fixed inset-0 transition-opacity" aria-hidden="true">
-					<div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-				</div>
-				<span
-					className="hidden sm:inline-block sm:align-middle sm:h-screen"
-					aria-hidden="true"
+		<AnimatePresence>
+			{isOpen ? (
+				<Dialog
+					as="div"
+					className="relative z-10"
+					open={isOpen}
+					onClose={onClose}
 				>
-					&#8203;
-				</span>
-				<div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-					{children}
-				</div>
-			</div>
-		</div>
+					<ModalBackground />
+					<motion.div
+						initial={{ opacity: 0 }}
+						exit={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						className="fixed inset-0 overflow-y-auto"
+					>
+						<div className="flex min-h-full items-center justify-center p-4 text-center">
+							<Dialog.Panel
+								style={{ maxWidth: width || '448px' }}
+								className="w-full  transform overflow-hidden rounded-2xl bg-white  text-left align-middle shadow-xl transition-all"
+							>
+								{children}
+							</Dialog.Panel>
+						</div>
+					</motion.div>
+				</Dialog>
+			) : null}
+		</AnimatePresence>
 	);
 };
+
+Modal.Heading = ModalHeading;
+Modal.Footer = ModalFooter;
+Modal.Content = ModalContent;
+
+export { Modal };

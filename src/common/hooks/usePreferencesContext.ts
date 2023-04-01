@@ -1,8 +1,8 @@
-import { preferencesContext } from '@/common/context/preferencesContext';
+import { PreferencesContext } from '@/common/context/preferencesContext';
 import { useContext } from 'react';
 
 export const usePreferencesContext = () => {
-	const preferences = useContext(preferencesContext);
+	const preferences = useContext(PreferencesContext);
 
 	if (!preferences) {
 		throw new Error(

@@ -15,7 +15,7 @@ import { Skeleton } from '@/common/components/Skeleton';
 const Languages = () => {
 	const tableColumns = useMemo(() => columns, []);
 
-	const { data, isLoading } = useGetLanguagesQuery(null);
+	const { data, isLoading } = useGetLanguagesQuery();
 
 	return (
 		<Dashboard>

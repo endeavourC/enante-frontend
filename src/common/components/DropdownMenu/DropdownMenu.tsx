@@ -40,13 +40,14 @@ export const DropdownMenu: React.FC<Props> = ({ items, customButton }) => {
 									static
 									className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
 								>
-									{items.map(({ name, callback }: MenuItem) => (
+									{items.map(({ name, callback, icon }: MenuItem) => (
 										<Menu.Item key={name}>
 											{() => (
 												<button
 													onClick={callback}
 													className="flex items-center justify-start text-left w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
 												>
+													{icon ? <span className="mr-2">{icon}</span> : null}
 													{name}
 												</button>
 											)}
