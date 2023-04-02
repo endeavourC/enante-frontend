@@ -1,5 +1,10 @@
-import { Container, Title } from '@/common/components';
-import { Layout } from '@/common/components/Layout';
+import {
+	Container,
+	Title,
+	Layout,
+	Notification,
+	NotificationType,
+} from '@/common/components';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { AuthFormBody, LoginFormActions } from './components';
@@ -9,10 +14,6 @@ import { schema } from './components/login/schema';
 import { reset } from './reducer/loginSlice';
 import { withResetStateWhenUnmount } from '@/features/Auth/hoc/withResetStateWhenUnmount';
 import { motion } from 'framer-motion';
-import {
-	Notification,
-	NotificationType,
-} from '@/common/components/Notification';
 
 const LoginView = () => {
 	const { t } = useTranslation();

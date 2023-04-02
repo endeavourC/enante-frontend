@@ -23,7 +23,6 @@ export const RouteView: React.FC<Props> = ({
 	if (isLogged && guestOnly) {
 		return <Navigate to="/panel" />;
 	}
-
 	if (!isLogged && !guestOnly) {
 		return <Navigate to="/login" />;
 	}

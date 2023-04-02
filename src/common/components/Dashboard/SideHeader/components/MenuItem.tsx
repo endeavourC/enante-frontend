@@ -20,7 +20,7 @@ export const MenuItem: React.FC<MenuItemProps & Props> = ({
 	});
 
 	return (
-		<li key={name} className={classes}>
+		<li key={name} className={classes} data-testid="menu-item">
 			{callback ? (
 				<button onClick={callback}>
 					<Text icon={icon}>{name}</Text>

@@ -7,9 +7,8 @@ export const authListenerMiddleware = createListenerMiddleware();
 authListenerMiddleware.startListening({
 	actionCreator: logout,
 	effect: async (action, listenerApi) => {
-		localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN);
-		localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN_EXPIRES_AT);
-		listenerApi.cancelActiveListeners();
+		window.localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN);
+		window.localStorage.removeItem(AUTH_KEYS.AUTH_TOKEN_EXPIRES_AT);
 		listenerApi.dispatch({ type: 'store/reset' });
 	},
 });

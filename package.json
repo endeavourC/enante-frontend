@@ -5,6 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"test": "vitest",
+		"coverage": "vitest --coverage",
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"prepare": "husky install"
@@ -32,19 +34,25 @@
 	},
 	"devDependencies": {
 		"@tailwindcss/forms": "^0.5.3",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^14.0.0",
 		"@types/node": "^18.14.1",
 		"@types/react": "^18.0.27",
 		"@types/react-dom": "^18.0.10",
 		"@types/react-table": "^7.7.14",
 		"@vitejs/plugin-react": "^3.1.0",
+		"@vitest/coverage-c8": "^0.29.8",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.35.0",
 		"eslint-config-react-app": "^7.0.1",
+		"jest": "^29.5.0",
+		"jsdom": "^21.1.1",
 		"postcss": "^8.4.21",
 		"tailwindcss": "^3.2.7",
 		"typescript": "^4.9.3",
 		"vite": "^4.1.0",
 		"vite-plugin-eslint": "^1.8.1",
-		"vite-plugin-svgr": "^2.4.0"
+		"vite-plugin-svgr": "^2.4.0",
+		"vitest": "^0.29.8"
 	}
 }

@@ -1,11 +1,11 @@
-import { Dashboard } from '@/common/components/Dashboard';
-import { DashboardContent } from '@/common/components/Dashboard/DashboardContent';
 import {
+	Dashboard,
+	DashboardContent,
 	Notification,
 	NotificationType,
-} from '@/common/components/Notification';
-import { SmartTable } from '@/common/components/SmartTable';
-import { ErrorHandler } from '@/common/components/ErrorHandler';
+	ErrorHandler,
+	SmartTable,
+} from '@/common/components';
 import { useMemo } from 'react';
 import { useGetLanguagesQuery } from './API/languages';
 import { columns } from './columns';

@@ -6,7 +6,7 @@ import {
 	useTable,
 } from 'react-table';
 import { AnimatePresence, animate, stagger } from 'framer-motion';
-import { Pagination } from '../Pagination/Pagination';
+import { Pagination } from '@/common/components/Pagination';
 import { useEffect } from 'react';
 import { NoResultsFound } from './components/NoResultsFound';
 import { TableRow } from './components/TableRow';

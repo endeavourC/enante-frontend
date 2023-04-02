@@ -1,4 +1,10 @@
-import { createContext, useState, useCallback, useMemo } from 'react';
+import {
+	createContext,
+	useState,
+	useCallback,
+	useMemo,
+	useEffect,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 type ModalContextType = {
@@ -17,6 +23,7 @@ interface Props {
 }
 
 export const ModalProvider: React.FC<Props> = ({ children }) => {
+	const [domReady, setDomReady] = useState<boolean>(false);
 	const [modal, setModal] = useState<React.ReactNode | null>(null);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -41,10 +48,16 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
 		[modal, isOpen, openModal, closeModal]
 	);
 
+	useEffect(() => {
+		setDomReady(true);
+	}, []);
+
 	return (
 		<ModalContext.Provider value={values}>
 			{children}
-			{createPortal(modal, document.getElementById('modal') as HTMLElement)}
+			{domReady && document.getElementById('modal')
+				? createPortal(modal, document.getElementById('modal') as HTMLElement)
+				: null}
 		</ModalContext.Provider>
 	);
 };

@@ -1,6 +1,5 @@
-import { Button } from '@/common/components';
+import { Button, Modal } from '@/common/components';
 import { ButtonKind } from '@/common/components/Button/Button';
-import { Modal } from '@/common/components/Modal';
 import { useModal } from '@/common/hooks/useModal';
 import { LanguageType } from '../types/language';
 

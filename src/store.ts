@@ -19,7 +19,7 @@ const resettableRootReducer = (
 	action: AnyAction
 ) => {
 	if (action.type === 'store/reset') {
-		return rootReducer(undefined, action);
+		state = undefined;
 	}
 
 	return rootReducer(state, action);

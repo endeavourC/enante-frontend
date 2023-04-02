@@ -1,5 +1,4 @@
-import { Container, Title } from '@/common/components';
-import { Layout } from '@/common/components/Layout';
+import { Container, Title, Layout } from '@/common/components';
 import { useSelector } from 'react-redux';
 import { RootState, useAppDispatch } from '@/store';
 import { register, RegisterPayload } from '@/features/Auth/API/register';

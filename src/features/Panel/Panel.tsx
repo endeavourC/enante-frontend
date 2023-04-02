@@ -1,5 +1,4 @@
-import { Dashboard } from '@/common/components/Dashboard';
-import { DashboardContent } from '@/common/components/Dashboard/DashboardContent';
+import { Dashboard, DashboardContent } from '@/common/components/';
 
 const PanelView = () => {
 	return (

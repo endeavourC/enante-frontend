@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+npx vitest run
 npx eslint . --ext .js,.jsx,.ts,.tsx --fix
 # npm test

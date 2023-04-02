@@ -23,9 +23,9 @@ const Modal = ({ onClose, isOpen, children, width }: Props) => {
 				>
 					<ModalBackground />
 					<motion.div
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
+						initial={{ opacity: 0, scale: 0.9 }}
+						exit={{ opacity: 0, scale: 0.9 }}
+						animate={{ opacity: 1, scale: 1 }}
 						className="fixed inset-0 overflow-y-auto"
 					>
 						<div className="flex min-h-full items-center justify-center p-4 text-center">
