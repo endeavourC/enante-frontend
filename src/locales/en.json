@@ -4,10 +4,18 @@
 	"login.or": "or",
 	"register.text": "Register",
 	"register.backToLoginText": "Back to login",
+	"errorHandler.text": "Something went wrong. Please try again later.",
 	"form.email.label": "Email",
 	"form.email.invalid": "Invalid Email Address",
 	"form.email.required": "Email Address is required",
 	"form.password.label": "Password",
 	"form.password.required": "Password is required",
-	"form.password.min": "Password must be at least 8 characters"
+	"form.password.min": "Password must be at least 8 characters",
+	"table.noResultsFound": "No results found",
+	"languages.removeModal.title": "Remove Language",
+	"languages.removeModal.content": "Do you want to delete your language <0>{{name}}</0> with all fiches related to it?",
+	"languages.removeModal.delete": "Delete",
+	"languages.removeModal.cancel": "Cancel",
+	"languages.table.heading": "Languages",
+	"languages.table.heading.button": "Add new language"
 }

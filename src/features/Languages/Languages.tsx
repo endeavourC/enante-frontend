@@ -11,9 +11,11 @@ import { useGetLanguagesQuery } from './API/languages';
 import { columns } from './columns';
 import { TableHeading } from './components/TableHeading';
 import { Skeleton } from '@/common/components/Skeleton';
+import { useTranslation } from 'react-i18next';
 
 const Languages = () => {
 	const tableColumns = useMemo(() => columns, []);
+	const { t } = useTranslation();
 
 	const { data, isLoading } = useGetLanguagesQuery();
 
@@ -24,7 +26,7 @@ const Languages = () => {
 					error={
 						<Notification
 							type={NotificationType.Error}
-							message="Something went wrong! Try to refresh the page."
+							message={t('errorHandler.error')}
 						/>
 					}
 				>

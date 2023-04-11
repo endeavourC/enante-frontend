@@ -31,7 +31,7 @@ const Modal = ({ onClose, isOpen, children, width }: Props) => {
 						<div className="flex min-h-full items-center justify-center p-4 text-center">
 							<Dialog.Panel
 								style={{ maxWidth: width || '448px' }}
-								className="w-full  transform overflow-hidden rounded-2xl bg-white  text-left align-middle shadow-xl transition-all"
+								className="w-full transform overflow-hidden rounded-2xl bg-white  text-left align-middle shadow-xl transition-all"
 							>
 								{children}
 							</Dialog.Panel>
