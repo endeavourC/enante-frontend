@@ -17,5 +17,17 @@
 	"languages.removeModal.delete": "Delete",
 	"languages.removeModal.cancel": "Cancel",
 	"languages.table.heading": "Languages",
-	"languages.table.heading.button": "Add new language"
+	"languages.table.heading.button": "Add new language",
+	"languages.addLanguageModal.button.submit": "Add language",
+	"languages.addLanguageModal.heading.addingLanguage": "Adding Language",
+	"languages.addLanguageModal.heading.addingFiches": "Adding Fiches",
+	"common.undo": "Undo",
+	"common.prev": "Previous",
+	"common.next": "Next",
+	"common.save": "Save",
+	"common.cancel": "Cancel",
+	"common.delete": "Delete",
+	"common.edit": "Edit",
+	"common.add": "Add",
+	"common.addNew": "Add new"
 }

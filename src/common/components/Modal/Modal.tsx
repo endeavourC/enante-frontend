@@ -4,6 +4,9 @@ import { ModalBackground } from './components/ModalBackground';
 import { ModalHeading } from './components/ModalHeading';
 import { ModalFooter } from './components/ModalFooter';
 import { ModalContent } from './components/ModalContent';
+import { ModalStepsHeadline } from './components/ModalSteps/ModalStepsHeadline';
+import { ModalStepsContent } from './components/ModalSteps/ModalStepsContent';
+import { Step } from '@/common/types/Step';
 
 type Props = {
 	children: React.ReactNode;
@@ -46,5 +49,7 @@ const Modal = ({ onClose, isOpen, children, width }: Props) => {
 Modal.Heading = ModalHeading;
 Modal.Footer = ModalFooter;
 Modal.Content = ModalContent;
+Modal.StepsHeadline = ModalStepsHeadline;
+Modal.StepsContent = ModalStepsContent;
 
 export { Modal };

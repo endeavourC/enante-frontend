@@ -1,8 +1,8 @@
 import { Button, Modal } from '@/common/components';
 import { ButtonKind } from '@/common/components/Button/Button';
-import { useModal } from '@/common/hooks/useModal';
+import { useModalService } from '@/common/hooks/useModalService';
 import { Trans, useTranslation } from 'react-i18next';
-import { LanguageType } from '../types/language';
+import { LanguageType } from '../../types/language';
 
 interface Props {
 	language: LanguageType;
@@ -11,7 +11,7 @@ interface Props {
 export const RemoveLanguageModal: React.FC<Props> = ({
 	language: { name, id },
 }) => {
-	const { isOpen, closeModal } = useModal();
+	const { isOpen, closeModal } = useModalService();
 	const { t } = useTranslation();
 
 	const onDelete = () => {

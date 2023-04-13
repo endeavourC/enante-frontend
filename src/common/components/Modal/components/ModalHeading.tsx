@@ -1,4 +1,4 @@
-import { useModal } from '@/common/hooks/useModal';
+import { useModalService } from '@/common/hooks/useModalService';
 import { AiOutlineClose } from 'react-icons/ai';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const ModalHeading: React.FC<Props> = ({ children }) => {
-	const { closeModal } = useModal();
+	const { closeModal } = useModalService();
 
 	return (
 		<div className="relative p-6 font-bold">

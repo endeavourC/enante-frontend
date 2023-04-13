@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 
-type ModalContextType = {
+type ModalContextServiceType = {
 	modal: React.ReactNode | null;
 	setModal: React.Dispatch<React.SetStateAction<React.ReactNode | null>>;
 	isOpen: boolean;
@@ -16,13 +16,14 @@ type ModalContextType = {
 	closeModal: () => void;
 };
 
-export const ModalContext = createContext<ModalContextType | null>(null);
+export const ModalContextService =
+	createContext<ModalContextServiceType | null>(null);
 
 interface Props {
 	children: React.ReactNode;
 }
 
-export const ModalProvider: React.FC<Props> = ({ children }) => {
+export const ModalServiceProvider: React.FC<Props> = ({ children }) => {
 	const [domReady, setDomReady] = useState<boolean>(false);
 	const [modal, setModal] = useState<React.ReactNode | null>(null);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -53,11 +54,11 @@ export const ModalProvider: React.FC<Props> = ({ children }) => {
 	}, []);
 
 	return (
-		<ModalContext.Provider value={values}>
+		<ModalContextService.Provider value={values}>
 			{children}
 			{domReady && document.getElementById('modal')
 				? createPortal(modal, document.getElementById('modal') as HTMLElement)
 				: null}
-		</ModalContext.Provider>
+		</ModalContextService.Provider>
 	);
 };

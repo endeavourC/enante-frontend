@@ -7,16 +7,16 @@ import { store } from './store';
 import '@/config/axios';
 import '@/config/i18n';
 import './index.css';
-import { ModalProvider } from './common/context/modalContext';
+import { ModalServiceProvider } from '@/common/context/ModalContextService';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<ModalProvider>
+			<ModalServiceProvider>
 				<PreferencesProvider>
 					<App />
 				</PreferencesProvider>
-			</ModalProvider>
+			</ModalServiceProvider>
 		</Provider>
 	</React.StrictMode>
 );
