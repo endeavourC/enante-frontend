@@ -2,6 +2,7 @@ export { Button } from './Button';
 export { Container } from './Containers';
 export { DarkModeSwitch } from './DarkModeSwitch';
 export { Title } from './Title';
+export { Text } from './Text';
 export { SmartTable } from './SmartTable';
 export { Skeleton } from './Skeleton';
 export { Pagination } from './Pagination';

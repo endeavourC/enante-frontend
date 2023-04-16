@@ -1,5 +1,6 @@
 import { Input } from '@/common/components/Forms';
 import { useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormData } from '../../schema';
 
 export const AddingLanguage = () => {
@@ -8,11 +9,14 @@ export const AddingLanguage = () => {
 		formState: { errors },
 	} = useFormContext<FormData>();
 
+	const { t } = useTranslation();
 	return (
 		<div className="w-full">
 			<Input
 				errors={errors.languageName}
-				label="Nazwa języka"
+				label={t(
+					'languages.addLanguageModal.addLanguageStep.addLanguageInputLabel'
+				)}
 				type="text"
 				{...register('languageName')}
 			/>

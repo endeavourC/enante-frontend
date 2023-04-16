@@ -5,10 +5,7 @@ import { ModalStepProvider } from '@/common/context/ModalStepContext';
 import { useModalService } from '@/common/hooks/useModalService';
 import { AddingLanguage } from './components/steps/AddingLanguage';
 import { AddLanguageModalBody } from './components/AddLanguageModalBody';
-
-const SecondComponent = () => {
-	return <div>Dodawanie fiszki</div>;
-};
+import { AddingFiches } from './components/steps/AddingFiches';
 
 export const AddLanguageModal: React.FC = () => {
 	const { isOpen, closeModal } = useModalService();
@@ -24,7 +21,7 @@ export const AddLanguageModal: React.FC = () => {
 			{
 				id: 2,
 				title: t('languages.addLanguageModal.heading.addingFiches'),
-				content: <SecondComponent />,
+				content: <AddingFiches />,
 			},
 		],
 		[t]

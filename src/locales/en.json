@@ -20,6 +20,7 @@
 	"languages.table.heading.button": "Add new language",
 	"languages.addLanguageModal.button.submit": "Add language",
 	"languages.addLanguageModal.heading.addingLanguage": "Adding Language",
+	"languages.addLanguageModal.addLanguageStep.addLanguageInputLabel": "Add project language",
 	"languages.addLanguageModal.heading.addingFiches": "Adding Fiches",
 	"common.undo": "Undo",
 	"common.prev": "Previous",
@@ -29,5 +30,6 @@
 	"common.delete": "Delete",
 	"common.edit": "Edit",
 	"common.add": "Add",
-	"common.addNew": "Add new"
+	"common.addNew": "Add new",
+	"common.validation.required": "This field is required."
 }

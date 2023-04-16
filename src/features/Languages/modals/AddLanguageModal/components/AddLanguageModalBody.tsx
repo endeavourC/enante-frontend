@@ -37,7 +37,7 @@ export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
 				<Modal.StepsHeadline onCurrentStep={onCurrentStep} />
 			</Modal.Heading>
 			<Modal.Content>
-				<form>
+				<form onSubmit={onSuccess}>
 					<Modal.StepsContent />
 				</form>
 			</Modal.Content>
