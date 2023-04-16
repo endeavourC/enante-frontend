@@ -6,7 +6,6 @@ import { ModalFooter } from './components/ModalFooter';
 import { ModalContent } from './components/ModalContent';
 import { ModalStepsHeadline } from './components/ModalSteps/ModalStepsHeadline';
 import { ModalStepsContent } from './components/ModalSteps/ModalStepsContent';
-import { Step } from '@/common/types/Step';
 
 type Props = {
 	children: React.ReactNode;

@@ -1,29 +1,30 @@
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Modal } from '@/common/components';
 import { ModalStepProvider } from '@/common/context/ModalStepContext';
 import { useModalService } from '@/common/hooks/useModalService';
-import { useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { FooterButtons } from './components/FooterButtons';
+import { AddingLanguage } from './components/steps/AddingLanguage';
+import { AddLanguageModalBody } from './components/AddLanguageModalBody';
+
+const SecondComponent = () => {
+	return <div>Dodawanie fiszki</div>;
+};
 
 export const AddLanguageModal: React.FC = () => {
 	const { isOpen, closeModal } = useModalService();
 	const { t } = useTranslation();
-
-	const onSuccess = () => {
-		console.log('success');
-	};
 
 	const steps = useMemo(
 		() => [
 			{
 				id: 1,
 				title: t('languages.addLanguageModal.heading.addingLanguage'),
-				content: <div>Dodawanie języka</div>,
+				content: <AddingLanguage />,
 			},
 			{
 				id: 2,
 				title: t('languages.addLanguageModal.heading.addingFiches'),
-				content: <div>Dodawanie fiszek</div>,
+				content: <SecondComponent />,
 			},
 		],
 		[t]
@@ -32,15 +33,7 @@ export const AddLanguageModal: React.FC = () => {
 	return (
 		<Modal onClose={closeModal} isOpen={isOpen} width="720px">
 			<ModalStepProvider steps={steps}>
-				<Modal.Heading>
-					<Modal.StepsHeadline />
-				</Modal.Heading>
-				<Modal.Content>
-					<Modal.StepsContent />
-				</Modal.Content>
-				<Modal.Footer>
-					<FooterButtons onSuccess={onSuccess} onCloseModal={closeModal} />
-				</Modal.Footer>
+				<AddLanguageModalBody closeModal={closeModal} />
 			</ModalStepProvider>
 		</Modal>
 	);

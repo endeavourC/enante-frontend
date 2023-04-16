@@ -1,6 +1,6 @@
 import { useModalSteps } from '@/common/hooks/useModalSteps';
 import { Step } from '@/common/types/Step';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export const ModalStepsContent = () => {
 	const { currentStep, steps } = useModalSteps();
@@ -10,15 +10,12 @@ export const ModalStepsContent = () => {
 			{steps?.map((step: Step) => {
 				if (step.id !== currentStep) return null;
 				return (
-					<motion.div
+					<div
 						key={step.id}
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
 						className="flex items-center justify-start flex-wrap"
 					>
 						{step.content}
-					</motion.div>
+					</div>
 				);
 			})}
 		</AnimatePresence>

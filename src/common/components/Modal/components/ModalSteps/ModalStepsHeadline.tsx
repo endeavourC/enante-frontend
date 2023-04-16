@@ -3,14 +3,12 @@ import { Step } from '@/common/types/Step';
 import { ModalStepHeadlineCircleBadge } from './ModalStepHeadlineCircleBadge';
 import { ModalStepHeadlineText } from './ModalStepHeadlineText';
 
-export const ModalStepsHeadline = () => {
-	const { currentStep, setCurrentStep, steps } = useModalSteps();
+interface Props {
+	onCurrentStep: (id: number) => void;
+}
 
-	console.log(steps);
-
-	const handleSetStep = (id: number) => () => {
-		setCurrentStep(id);
-	};
+export const ModalStepsHeadline: React.FC<Props> = ({ onCurrentStep }) => {
+	const { currentStep, steps } = useModalSteps();
 
 	return (
 		<div className="flex items-center justify-start flex-wrap">
@@ -18,7 +16,7 @@ export const ModalStepsHeadline = () => {
 				<button
 					className="flex items-center justify-start mr-6 text-sm"
 					key={id}
-					onClick={handleSetStep(id)}
+					onClick={() => onCurrentStep(id)}
 				>
 					<ModalStepHeadlineCircleBadge isActive={currentStep === id}>
 						{index + 1}

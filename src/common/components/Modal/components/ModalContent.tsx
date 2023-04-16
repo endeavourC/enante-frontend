@@ -3,5 +3,5 @@ interface Props {
 }
 
 export const ModalContent: React.FC<Props> = ({ children }) => {
-	return <div className="relative p-6">{children}</div>;
+	return <div className="relative px-6 pb-6">{children}</div>;
 };
