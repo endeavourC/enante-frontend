@@ -28,12 +28,7 @@ const LoginView = () => {
 	return (
 		<Layout>
 			<Container>
-				<motion.div
-					initial={{ opacity: 0, x: 200 }}
-					animate={{ opacity: 1, x: 0 }}
-					exit={{ opacity: 0, x: -200 }}
-					transition={{ type: 'spring', duration: 0.65, bounce: 0.5 }}
-				>
+				<motion.div>
 					<div className="flex items-center justify-center h-screen bg-white dark:bg-slate-900 transition-all">
 						<div className="max-w-2xl w-full shadow-muted/30 p-6 shadow-lg bg-white dark:bg-slate-800 dark:shadow-none transition-all">
 							<Title center>{t('login.form.title')}</Title>

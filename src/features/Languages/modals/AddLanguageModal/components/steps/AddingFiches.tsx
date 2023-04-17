@@ -1,9 +1,10 @@
-import { Text } from '@/common/components';
+import { useTranslation } from 'react-i18next';
+import { v4 as uuid } from 'uuid';
 import { FichCard } from '@/features/Languages/components/FichCard';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 import { FormData } from '../../schema';
 import { AddFichForm } from '../AddFichForm';
+import React from 'react';
 
 export const AddingFiches = () => {
 	const {
@@ -20,7 +21,7 @@ export const AddingFiches = () => {
 	const handleCreateFich = () => {
 		append({
 			name: 'Miotła',
-			description: 'Miotła do zamiatania',
+			description: 'do zamiatania',
 			translation: 'Broom',
 		});
 	};
@@ -36,14 +37,19 @@ export const AddingFiches = () => {
 			<AddFichForm onClick={handleCreateFich} />
 
 			<div className="w-full grid grid-cols-3 gap-4">
-				{fields.map(({ translation, description, name }, index) => (
-					<FichCard
-						key={index}
-						name={name}
-						translation={translation}
-						description={description}
-					/>
-				))}
+				{fields.map(({ translation, description, name }, index) => {
+					return (
+						<FichCard
+							editable
+							key={uuid()}
+							id={index}
+							name={name}
+							translation={translation}
+							description={description}
+							onRemove={remove}
+						/>
+					);
+				})}
 			</div>
 		</div>
 	);

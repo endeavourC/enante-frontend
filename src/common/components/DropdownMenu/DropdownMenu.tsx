@@ -5,16 +5,24 @@ import { AnimatePresence, motion } from 'framer-motion';
 interface Props {
 	items: MenuItem[];
 	customButton?: React.ReactNode;
+	width?: string;
 }
 
-export const DropdownMenu: React.FC<Props> = ({ items, customButton }) => {
+export const DropdownMenu: React.FC<Props> = ({
+	items,
+	customButton,
+	width = '224px',
+}) => {
+	const onClick = (ev: React.MouseEvent) => ev.stopPropagation();
+
 	return (
 		<Menu as="div" className="relative inline-block">
 			{({ open }) => (
 				<>
 					<Menu.Button
+						onClick={onClick}
 						data-testid="dropdown-menu-button"
-						className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+						className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-transparent rounded-lg hover:bg-gray-100 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 					>
 						{customButton ? (
 							customButton
@@ -41,9 +49,10 @@ export const DropdownMenu: React.FC<Props> = ({ items, customButton }) => {
 								exit={{ opacity: 0, scale: 0.9 }}
 							>
 								<Menu.Items
+									style={{ width }}
 									data-test-id="dropdown-menu-items-container"
 									static
-									className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+									className="absolute left-1/2 -translate-x-1/2 mt-2  origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-[999]"
 								>
 									{items.map(({ name, callback, icon }: MenuItem) => (
 										<Menu.Item key={name}>
