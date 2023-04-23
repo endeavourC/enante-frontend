@@ -6,8 +6,9 @@ export const schema = yup.object().shape({
 	fiches: yup.array().of(
 		yup.object().shape({
 			name: yup.string().required(i18n.t('common.validation.required')),
-			description: yup.string().required(i18n.t('common.validation.required')),
+			description: yup.string(),
 			translation: yup.string().required(i18n.t('common.validation.required')),
+			editMode: yup.boolean(),
 		})
 	),
 });

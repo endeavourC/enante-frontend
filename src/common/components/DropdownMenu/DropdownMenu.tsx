@@ -1,6 +1,7 @@
 import { MenuItem } from '@/common/types/MenuItem';
 import { Menu } from '@headlessui/react';
 import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
 
 interface Props {
 	items: MenuItem[];
@@ -52,14 +53,19 @@ export const DropdownMenu: React.FC<Props> = ({
 									style={{ width }}
 									data-test-id="dropdown-menu-items-container"
 									static
-									className="absolute left-1/2 -translate-x-1/2 mt-2  origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-[999]"
+									className="absolute left-1/2 -translate-x-1/2 mt-2  origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-[99999]"
 								>
 									{items.map(({ name, callback, icon }: MenuItem) => (
 										<Menu.Item key={name}>
 											{() => (
 												<button
 													data-testid="menu-dropdown-item-btn"
-													onClick={callback}
+													onClick={(ev: React.MouseEvent) => {
+														ev.stopPropagation();
+														if (callback) {
+															callback();
+														}
+													}}
 													className="flex items-center justify-start text-left w-full px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
 												>
 													{icon ? <span className="mr-2">{icon}</span> : null}

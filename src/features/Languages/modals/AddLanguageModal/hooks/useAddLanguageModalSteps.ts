@@ -17,29 +17,54 @@ export const useAddLanguageModalSteps = ({
 	stepCallbacks,
 }: IUseAddLanguageModalSteps) => {
 	const onNextStep = useCallback(() => {
-		if (stepCallbacks[currentStep - 1]) {
-			stepCallbacks[currentStep - 1]();
-		}
-		if (methods.formState.isValid) {
-			setNextStep();
-		}
+		stepValidation(
+			stepCallbacks,
+			currentStep,
+			methods.formState.isValid,
+			() => {
+				setNextStep();
+			}
+		);
 	}, [currentStep, methods.formState.isValid, setNextStep, stepCallbacks]);
 
 	const onCurrentStep = useCallback(
 		(id: number) => {
-			if (stepCallbacks[currentStep - 1]) {
-				stepCallbacks[currentStep - 1]();
-			}
-			if (methods.formState.isValid) {
-				setCurrentStep(id);
-			}
+			stepValidation(
+				stepCallbacks,
+				currentStep,
+				methods.formState.isValid,
+				() => {
+					setCurrentStep(id);
+				}
+			);
 		},
 		[currentStep, methods.formState.isValid, setCurrentStep, stepCallbacks]
 	);
 
 	const onPrevStep = useCallback(() => {
-		setPrevStep();
-	}, [setPrevStep]);
+		stepValidation(
+			stepCallbacks,
+			currentStep,
+			methods.formState.isValid,
+			() => {
+				setPrevStep();
+			}
+		);
+	}, [setPrevStep, methods.formState.isValid, currentStep, stepCallbacks]);
 
 	return { onNextStep, onCurrentStep, onPrevStep };
+};
+
+const stepValidation = (
+	stepCallbacks: Function[],
+	currentStep: number,
+	isValid: boolean,
+	callback: () => void
+) => {
+	if (stepCallbacks[currentStep - 1]) {
+		stepCallbacks[currentStep - 1]();
+	}
+	if (isValid) {
+		callback();
+	}
 };
