@@ -45,6 +45,7 @@ export const DropdownMenu: React.FC<Props> = ({
 					<AnimatePresence>
 						{open ? (
 							<motion.div
+								className="relative z-20"
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								exit={{ opacity: 0, scale: 0.9 }}

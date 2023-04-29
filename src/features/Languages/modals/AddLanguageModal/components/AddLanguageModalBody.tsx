@@ -6,6 +6,8 @@ import { FormData, schema } from '../schema';
 import { useModalSteps } from '@/common/hooks/useModalSteps';
 import { useAddLanguageModalSteps } from '../hooks/useAddLanguageModalSteps';
 import { useAddLanguageModalFormTriggers } from '../hooks/useAddLanguageModalFormTriggers';
+import { useAddLanguageMutation } from '@/features/Languages/API/languages';
+import { LanguageType } from '@/features/Languages/types/language';
 
 interface Props {
 	closeModal: () => void;
@@ -20,6 +22,8 @@ export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
 
 	const { stepCallbacks } = useAddLanguageModalFormTriggers(methods);
 
+	const [addLanguage] = useAddLanguageMutation();
+
 	const { onNextStep, onPrevStep, onCurrentStep } = useAddLanguageModalSteps({
 		setNextStep,
 		setPrevStep,
@@ -29,7 +33,13 @@ export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
 		stepCallbacks,
 	});
 
-	const onSuccess = methods.handleSubmit((data) => console.log(data));
+	const onSuccess = methods.handleSubmit((data) => {
+		addLanguage(data).then(({ data }: any) => {
+			if (data.id) {
+				closeModal();
+			}
+		});
+	});
 
 	return (
 		<FormProvider {...methods}>

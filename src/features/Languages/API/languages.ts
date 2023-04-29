@@ -3,6 +3,7 @@ import { LanguageType } from '../types/language';
 
 export const languagesApi = createApi({
 	reducerPath: 'languagesApi',
+	tagTypes: ['Languages'],
 	baseQuery: fetchBaseQuery({
 		baseUrl: import.meta.env.VITE_API_URL,
 		prepareHeaders: (headers, { getState }: any) => {
@@ -17,8 +18,17 @@ export const languagesApi = createApi({
 	endpoints: (builder) => ({
 		getLanguages: builder.query<LanguageType, void>({
 			query: () => '/languages',
+			providesTags: ['Languages'],
+		}),
+		addLanguage: builder.mutation({
+			query: (body) => ({
+				url: '/languages/add',
+				method: 'POST',
+				body,
+			}),
+			invalidatesTags: ['Languages'],
 		}),
 	}),
 });
 
-export const { useGetLanguagesQuery } = languagesApi;
+export const { useGetLanguagesQuery, useAddLanguageMutation } = languagesApi;
