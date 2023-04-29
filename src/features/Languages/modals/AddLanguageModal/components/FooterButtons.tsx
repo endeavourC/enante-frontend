@@ -3,6 +3,7 @@ import { Button, ButtonKind } from '@/common/components/Button/Button';
 import { useModalSteps } from '@/common/hooks/useModalSteps';
 
 interface Props {
+	isLoading: boolean;
 	onSuccess: () => void;
 	onCloseModal?: () => void;
 	onNextStep: () => void;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export const FooterButtons: React.FC<Props> = ({
+	isLoading,
 	onSuccess,
 	onNextStep,
 	onPrevStep,
@@ -36,7 +38,11 @@ export const FooterButtons: React.FC<Props> = ({
 			) : null}
 			{currentStep === steps.length ? (
 				<span className="mr-4">
-					<Button kind={ButtonKind.Primary} onClick={onSuccess}>
+					<Button
+						isLoading={isLoading}
+						kind={ButtonKind.Primary}
+						onClick={onSuccess}
+					>
 						{t('languages.addLanguageModal.button.submit')}
 					</Button>
 				</span>

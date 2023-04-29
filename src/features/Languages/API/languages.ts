@@ -28,7 +28,18 @@ export const languagesApi = createApi({
 			}),
 			invalidatesTags: ['Languages'],
 		}),
+		deleteLanguage: builder.mutation({
+			query: (id: number) => ({
+				url: `/languages/delete/${id}`,
+				method: 'DELETE',
+			}),
+			invalidatesTags: ['Languages'],
+		}),
 	}),
 });
 
-export const { useGetLanguagesQuery, useAddLanguageMutation } = languagesApi;
+export const {
+	useGetLanguagesQuery,
+	useAddLanguageMutation,
+	useDeleteLanguageMutation,
+} = languagesApi;
