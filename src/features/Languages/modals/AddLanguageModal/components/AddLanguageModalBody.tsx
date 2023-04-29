@@ -7,7 +7,6 @@ import { useModalSteps } from '@/common/hooks/useModalSteps';
 import { useAddLanguageModalSteps } from '../hooks/useAddLanguageModalSteps';
 import { useAddLanguageModalFormTriggers } from '../hooks/useAddLanguageModalFormTriggers';
 import { useAddLanguageMutation } from '@/features/Languages/API/languages';
-import { LanguageType } from '@/features/Languages/types/language';
 
 interface Props {
 	closeModal: () => void;

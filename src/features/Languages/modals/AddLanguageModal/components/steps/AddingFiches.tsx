@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { FichCard } from '@/features/Languages/components/FichCard/FichCard';
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { FormData } from '../../schema';
