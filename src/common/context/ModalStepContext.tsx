@@ -1,10 +1,4 @@
-import {
-	createContext,
-	useState,
-	useCallback,
-	useMemo,
-	useEffect,
-} from 'react';
+import { createContext, useState, useCallback, useMemo } from 'react';
 import { Step } from '@/common/types/Step';
 
 type ModalContextType = {
