@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '@/config/axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export interface LoginPayload {

@@ -1,41 +1,25 @@
-import { yupResolver } from '@hookform/resolvers/yup';
 import { FooterButtons } from '../components/FooterButtons';
 import { Modal } from '@/common/components';
-import { FormProvider, useForm } from 'react-hook-form';
-import { FormData, schema } from '../schema';
-import { useModalSteps } from '@/common/hooks/useModalSteps';
-import { useAddLanguageModalSteps } from '../hooks/useAddLanguageModalSteps';
-import { useAddLanguageModalFormTriggers } from '../hooks/useAddLanguageModalFormTriggers';
+import { FormProvider } from 'react-hook-form';
 import { useAddLanguageMutation } from '@/features/Languages/API/languages';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
-
+import { useModalSteps } from '@/common/hooks/useModalSteps';
 interface Props {
 	closeModal: () => void;
+	methods: any;
 }
 
-export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
-	const methods = useForm<FormData>({
-		resolver: yupResolver(schema),
-	});
+export const AddLanguageModalBody: React.FC<Props> = ({
+	methods,
+	closeModal,
+}) => {
 	const { t } = useTranslation();
-	const { setNextStep, setPrevStep, currentStep, setCurrentStep } =
-		useModalSteps();
-
-	const { stepCallbacks } = useAddLanguageModalFormTriggers(methods);
+	const { setNextStep, setStep, setPrevStep } = useModalSteps();
 
 	const [addLanguage, { isLoading }] = useAddLanguageMutation();
 
-	const { onNextStep, onPrevStep, onCurrentStep } = useAddLanguageModalSteps({
-		setNextStep,
-		setPrevStep,
-		currentStep,
-		setCurrentStep,
-		methods,
-		stepCallbacks,
-	});
-
-	const onSuccess = methods.handleSubmit((data) => {
+	const onSuccess = methods.handleSubmit((data: FormData) => {
 		addLanguage(data).then(({ data }: any) => {
 			if (data.status === 'success') {
 				closeModal();
@@ -47,7 +31,7 @@ export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
 	return (
 		<FormProvider {...methods}>
 			<Modal.Heading>
-				<Modal.StepsHeadline onCurrentStep={onCurrentStep} />
+				<Modal.StepsHeadline onCurrentStep={setStep} />
 			</Modal.Heading>
 			<Modal.Content>
 				<form onSubmit={onSuccess}>
@@ -58,8 +42,8 @@ export const AddLanguageModalBody: React.FC<Props> = ({ closeModal }) => {
 				<FooterButtons
 					isLoading={isLoading}
 					errors={methods.formState.errors}
-					onNextStep={onNextStep}
-					onPrevStep={onPrevStep}
+					onNextStep={setNextStep}
+					onPrevStep={setPrevStep}
 					onSuccess={onSuccess}
 					onCloseModal={closeModal}
 				/>

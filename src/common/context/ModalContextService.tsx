@@ -35,6 +35,9 @@ export const ModalServiceProvider: React.FC<Props> = ({ children }) => {
 
 	const closeModal = useCallback(() => {
 		setIsOpen(false);
+		setTimeout(() => {
+			setModal(null);
+		}, 500);
 	}, []);
 
 	const values = useMemo(

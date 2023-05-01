@@ -42,4 +42,5 @@ export const {
 	useGetLanguagesQuery,
 	useAddLanguageMutation,
 	useDeleteLanguageMutation,
+	useIsLanguageExistsQuery,
 } = languagesApi;

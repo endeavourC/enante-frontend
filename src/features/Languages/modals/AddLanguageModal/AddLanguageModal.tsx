@@ -6,10 +6,18 @@ import { useModalService } from '@/common/hooks/useModalService';
 import { AddingLanguage } from './components/steps/AddingLanguage';
 import { AddLanguageModalBody } from './components/AddLanguageModalBody';
 import { AddingFiches } from './components/steps/AddingFiches';
+import { languageTrigger } from './triggers/languageTrigger';
+import { useForm } from 'react-hook-form';
+import { FormData, schema } from './schema';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 export const AddLanguageModal: React.FC = () => {
 	const { isOpen, closeModal } = useModalService();
 	const { t } = useTranslation();
+
+	const methods = useForm<FormData>({
+		resolver: yupResolver(schema),
+	});
 
 	const steps = useMemo(
 		() => [
@@ -17,6 +25,7 @@ export const AddLanguageModal: React.FC = () => {
 				id: 1,
 				title: t('languages.addLanguageModal.heading.addingLanguage'),
 				content: <AddingLanguage />,
+				validationTriggers: [languageTrigger],
 			},
 			{
 				id: 2,
@@ -29,8 +38,8 @@ export const AddLanguageModal: React.FC = () => {
 
 	return (
 		<Modal onClose={closeModal} isOpen={isOpen} width="720px">
-			<ModalStepProvider steps={steps}>
-				<AddLanguageModalBody closeModal={closeModal} />
+			<ModalStepProvider methods={methods} steps={steps}>
+				<AddLanguageModalBody methods={methods} closeModal={closeModal} />
 			</ModalStepProvider>
 		</Modal>
 	);
